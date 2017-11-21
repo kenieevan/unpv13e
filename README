@@ -1,3 +1,26 @@
+============
+Test case
+
+udp :
+	server: udpcliserv/udpserv01  
+	(It is bind to 100.64.0.1 , recv input from client, echo the input back to client )
+
+
+	Run client: ./udptest.sh #loopNumber  #port
+	(This script run udpcli01 for loopNumber times in seq.
+	 In each client, it sends input to server, and recv echo from server.
+	 Each client 's src port is bond, beggin from #port.	
+	)		
+
+tcp:
+	server:  server/serv01  hostip hostport
+	(listen on hostport, fork a process to serve each client conn.
+	in each process, just read from client and echo back)
+
+	client:  
+	client <hostname or IPaddr> <port> <#children> sleep secs
+	{fork #children process, each one connect the server , sleep, then close and exit}
+
 QUICK AND DIRTY
 ===============
 
