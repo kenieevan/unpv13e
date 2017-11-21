@@ -34,6 +34,15 @@ Execute the following from the src/ directory:
     cd ../libfree  # continue building the basic library
     make
 
+
+    cd server   #buld the tcp server and client
+    make
+	
+    cd udpcliserv  #buld the udp server and client
+　　make
+
+
+##########################
     cd ../libroute # only if your system supports 4.4BSD style routing sockets
     make           # only if your system supports 4.4BSD style routing sockets
 
