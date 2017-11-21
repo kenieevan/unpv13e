@@ -10,7 +10,8 @@ main(int argc, char **argv)
 
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family      = AF_INET;
-	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	//servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	servaddr.sin_addr.s_addr = htonl(0x64400001);
 	servaddr.sin_port        = htons(SERV_PORT);
 
 	Bind(sockfd, (SA *) &servaddr, sizeof(servaddr));

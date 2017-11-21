@@ -1,10 +1,10 @@
 /* include serv01 */
 #include	"unp.h"
-
 int
 main(int argc, char **argv)
 {
 	int					listenfd, connfd;
+        int forknum = 0;
 	pid_t				childpid;
 	void				sig_chld(int), sig_int(int), web_child(int);
 	socklen_t			clilen, addrlen;
@@ -35,6 +35,10 @@ main(int argc, char **argv)
 			web_child(connfd);	/* process request */
 			exit(0);
 		}
+
+                forknum++;
+                printf("new child accepted %d\n", forknum);
+
 		Close(connfd);			/* parent closes connected socket */
 	}
 }

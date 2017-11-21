@@ -40,3 +40,6 @@ Make.defines
 Makefile
 config.h
 config.status
+
+*.lh
+*.lc

@@ -1,10 +1,11 @@
 #include	"unp.h"
 
 #define	MAXN	16384		/* max # bytes client can request */
-
 void
 web_child(int sockfd)
 {
+
+        int num = 0;
 	int			ntowrite;
 	ssize_t		nread;
 	char		line[MAXLINE], result[MAXN];
@@ -19,5 +20,9 @@ web_child(int sockfd)
 			err_quit("client request for %d bytes", ntowrite);
 
 		Writen(sockfd, result, ntowrite);
+                if ( (num % 10) == 0)  {
+                        printf("server read write and alive num is %d\n", num);
+               }
+               num++;
 	}
 }
