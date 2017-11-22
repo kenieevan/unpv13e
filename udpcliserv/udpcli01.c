@@ -1,4 +1,6 @@
 #include	"unp.h"
+#include <sys/types.h>          /* See NOTES */
+#include <sys/socket.h>
 
 int
 main(int argc, char **argv)
@@ -23,6 +25,11 @@ main(int argc, char **argv)
 
 
 	sockfd = Socket(AF_INET, SOCK_DGRAM, 0);
+
+	struct timeval tv;
+	tv.tv_sec = 5;  /* 30 Secs Timeout */
+	tv.tv_usec = 0;  // Not init'ing this can cause strange errors
+	setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv,sizeof(struct timeval));
 
 	if (bind(sockfd, (struct sockaddr *) &srcaddr, sizeof(srcaddr)) < 0) {
 		perror("bind");
