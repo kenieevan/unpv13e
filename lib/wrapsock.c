@@ -206,7 +206,7 @@ Recvfrom(int fd, void *ptr, size_t nbytes, int flags,
 	ssize_t		n;
 
 	if ( (n = recvfrom(fd, ptr, nbytes, flags, sa, salenptr)) < 0)
-		err_sys("recvfrom error");
+		printf("recvfrom error");
 	return(n);
 }
 
